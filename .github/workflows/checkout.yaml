@@ -37,4 +37,4 @@ jobs:
     needs: [checkout]
     uses: ./.github/workflows/build-and-test.yaml
     with:
-      artifact: ${{ needs.build.outputs.artifact }}
+      artifact: ${{ needs.checkout.outputs.artifact }}
