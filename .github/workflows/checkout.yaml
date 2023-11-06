@@ -8,16 +8,31 @@ on:
       - "**"
   workflow_dispatch:
 
+env:
+  artifact: workflow-tests-checkout
+
 jobs:
   checkout:
     runs-on: ubuntu-latest
+
+    outputs:
+      artifact: ${{ env.artifact }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
+
       - name: Upload artifact
         uses: actions/upload-artifact@master
         with:
           name: checkout
           path: .
+
+  build-and-test:
+    needs: [checkout]
+    uses: ./.github/workflows/build-and-test.yaml
+    if: ${{ inputs.deploy_to_vks == 'true' || github.ref == 'refs/heads/master' }}
+    with:
+      artifact_id: ${{ needs.build.outputs.artifact }}

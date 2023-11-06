@@ -1,7 +1,11 @@
 name: Build and test
 
 on:
-  [push, workflow_dispatch]
+  workflow_call:
+    inputs:
+      artifact:
+        required: true
+        type: string
 
 env:
   DOTNET_NOLOGO: true
@@ -14,7 +18,7 @@ jobs:
       - name: Download artifact
         uses: actions/download-artifact@master
         with:
-          name: checkout
+          name: ${{ inputs.artifact }}
           path: .
 
       - name: Install .NET SDK
