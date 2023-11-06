@@ -35,4 +35,4 @@ jobs:
     uses: ./.github/workflows/build-and-test.yaml
     if: ${{ inputs.deploy_to_vks == 'true' || github.ref == 'refs/heads/master' }}
     with:
-      artifact_id: ${{ needs.build.outputs.artifact }}
+      artifact: ${{ needs.build.outputs.artifact }}
