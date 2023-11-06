@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <UserSecretsId>720bd8dc-7d79-4c3d-bd50-09e1026ef993</UserSecretsId>
+
+        <ContainerImageName>workflow-tests-api</ContainerImageName>
+        <ContainerRuntimeIdentifier>linux-x64</ContainerRuntimeIdentifier>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.8" />
+        <PackageReference Include="Microsoft.Extensions.Hosting.Systemd" Version="7.0.0" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    </ItemGroup>
+
+</Project>
