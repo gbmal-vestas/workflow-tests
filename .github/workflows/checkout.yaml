@@ -1,0 +1,23 @@
+name: Checkout
+
+on:
+  push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "**"
+  workflow_dispatch:
+
+jobs:
+  checkout:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Upload artifact
+        uses: actions/upload-artifact@master
+        with:
+          name: checkout
+          path: .
